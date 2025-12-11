@@ -127,3 +127,10 @@ form.addEventListener('submit', async event => {
     // Send new post to API
     await createPost(title, content);
 });
+
+postList.addEventListener('click', async event => {
+    if (event.target.tagName === 'BUTTON') {
+        const postId = event.target.closest('article').id;
+        sendHTTPRequest('DELETE', `https://jsonplaceholder.typicode.com/posts/${postId}`);
+    }
+})
